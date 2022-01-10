@@ -6,19 +6,19 @@ export default data=[
         options:[
             {
                 optionId:0,
-                imgUrl:require("../public/images/aww.png")
+                imgUrl:require("../assets/images/aww.png")
             },
             {
                 optionId:1,
-                imgUrl:require("../public/images/greece.png")
+                imgUrl:require("../assets/images/greece.png")
             },
             {
                 optionId:2,
-                imgUrl:require("../public/images/bww.png")
+                imgUrl:require("../assets/images/bww.png")
             },
             {
                 optionId:3,
-                imgUrl:require("../public/images/ar.png")
+                imgUrl:require("../assets/images/ar.png")
             }
         ]
     },
@@ -29,19 +29,19 @@ export default data=[
         options:[
             {
                 optionId:0,
-                imgUrl:require("../public/images/lr.png")
+                imgUrl:require("../assets/images/lr.png")
             },
             {
                 optionId:1,
-                imgUrl:require("../public/images/my.png")
+                imgUrl:require("../assets/images/my.png")
             },
             {
                 optionId:2,
-                imgUrl:require("../public/images/us.png")
+                imgUrl:require("../assets/images/us.png")
             },
             {
                 optionId:3,
-                imgUrl:require("../public/images/xk.png")
+                imgUrl:require("../assets/images/xk.png")
             }
         ]
     }
