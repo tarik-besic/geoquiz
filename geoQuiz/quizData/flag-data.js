@@ -1,0 +1,48 @@
+export default data=[
+    {
+        id:0,
+        question: "Argentina",
+        correctOptionId:3,
+        options:[
+            {
+                optionId:0,
+                imgUrl:require("../public/images/aww.png")
+            },
+            {
+                optionId:1,
+                imgUrl:require("../public/images/greece.png")
+            },
+            {
+                optionId:2,
+                imgUrl:require("../public/images/bww.png")
+            },
+            {
+                optionId:3,
+                imgUrl:require("../public/images/ar.png")
+            }
+        ]
+    },
+    {
+        id:1,
+        question: "USA",
+        correctOptionId:2,
+        options:[
+            {
+                optionId:0,
+                imgUrl:require("../public/images/lr.png")
+            },
+            {
+                optionId:1,
+                imgUrl:require("../public/images/my.png")
+            },
+            {
+                optionId:2,
+                imgUrl:require("../public/images/us.png")
+            },
+            {
+                optionId:3,
+                imgUrl:require("../public/images/xk.png")
+            }
+        ]
+    }
+]
