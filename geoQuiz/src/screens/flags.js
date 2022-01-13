@@ -12,38 +12,43 @@ const Flags=()=>{
     const [score,setScore]=useState(0);
     const [correctOption,setCorrectOption]=useState(null);
     const [currentOptionSelected,setCurrentOptionSelected]=useState(null);
+    const [btnDisabled,setBtnDisabled]=useState(false); //if user can select options 
 
-    const validateAnswer=(id)=>{
-        //setting correct option
-        setCorrectOption(data[question].correctOptionId);
-
-        //validating correct option
-        if(id==correctOption)
-            {
-                setScore(score + 1 );
-                setQuestion(question+1)
-                setShowButton(true);
-            }
-        else
-            console.log("Nisi pogodio drzavu");
-    }
+    const validation=(id)=>{
+            setBtnDisabled(true);
+            setCorrectOption(data[question].correctOptionId)
+            setCurrentOptionSelected(id)
+            //validating correct option
+            if(id==correctOption)
+                {
+                    setScore(score+1);
+                    setShowButton(true);
+                    console.log("BRAVOOOOOOOOOOO")
+                }
+            else
+                {
+                    setShowButton(true);
+                }
+        }
 
     const nextQuestion=()=>{
-        if(data[question]==data.length-1)
+        if(data[question].id==data.length-1)
             {
                 //last question
                 console.log("NEMA VISE PITANJA")
+                return null
             }
         else{
-            setCorrectOption(null);
+            setQuestion(question+1);
+            setCorrectOption(null); 
             setCurrentOptionSelected(null);
+            setShowButton(false);
+            setBtnDisabled(false)
             //is option disabled =true
         }
-
     }
-
-
     const renderQuestion=(id)=>{
+            console.log("renderan"+id);
         return(
             <View>
                 <Text>
@@ -52,31 +57,26 @@ const Flags=()=>{
 
                 <View >
                     <Text >
-                        {data[id].question}
+                        {console.log("TRL:"+question)}
+                        {data[question].question}
                     </Text>
+                    
                 </View>
-                <Button title="Gumb" onPress={()=>{setQuestion(question+1)}}/>
                 <View style={{flexDirection:"row",flexWrap:"wrap",justifyContent:"space-evenly"}}>
-                    {data[id].options.map(option=>{
+                    {data[question].options.map(option=>{
                         return(
                             <TouchableOpacity 
                             key={option.optionId}
                             onPress={()=>{
-                            validateAnswer(option.optionId)
-                            console.log("validiram:"+option.optionId)
+                                validation(option.optionId) //answer validation
                             }}
+                            disabled={btnDisabled} //setting to disabled if select i disabled
                             style={{
                                 marginVertical:5,
-                                borderWidth:5,
-                                borderColor: (currentOptionSelected==correctOption) ? "green" : "red"
+                                borderWidth:4,
+                                borderColor: (option.optionId==correctOption) ? "green" : option.optionId==currentOptionSelected ? "red" : 0
                             }}
                             >
-
-                                {
-                                    // if(data[id].correctOptionId==option.optionId)
-                                        
-
-                                }
                                 <Image source={option.imgUrl} style={{minHeight:105}} />
                             </TouchableOpacity>
                         )
@@ -92,14 +92,17 @@ const Flags=()=>{
         {
             return(
                 <View>
-                    <TouchableOpacity onPress={nextQuestion} style={{backgroundColor:"#c4c4c4"}}>
+                    <TouchableOpacity onPress={()=>{
+                        nextQuestion();
+                    }} style={{backgroundColor:"#c4c4c4"}}>
                     <Text>Dugme</Text>
                     </TouchableOpacity>
                 </View>
             )
         }
+        else
+            return null;
     }
-
     return (
         <View>
             {renderQuestion(question)}
