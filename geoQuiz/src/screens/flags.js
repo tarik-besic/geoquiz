@@ -4,6 +4,9 @@ import { Button, StyleSheet, View , Text, Image, TouchableOpacity} from "react-n
 //data
 import data from "../../quizData/flag-data";
 
+//images
+import correctCircle from "../../assets/images/circleC.png"
+import wrongCircle from "../../assets/images/circleW.png"
 
 const Flags=()=>{
 
@@ -49,19 +52,28 @@ const Flags=()=>{
     }
     const renderQuestion=(id)=>{
             console.log("renderan"+id);
+            let displayImg;
         return(
-            <View>
-                <Text>
+            <View >
+                <Text style={{textAlign:"center", fontSize:30, marginBottom:30}}>
                     Guess the Country
                 </Text>
 
                 <View >
-                    <Text >
-                        {console.log("TRL:"+question)}
+                    <Text style={
+                        {textAlign:"center",
+                        fontSize:30,
+                        marginBottom:30,
+                        fontWeight:"bold",
+                        color: currentOptionSelected==data[question].correctOptionId ? "#49FF00" : btnDisabled ? "#D72323" : "#c4c4c4"
+                        }} >
                         {data[question].question}
                     </Text>
-                    
+                    <View style={{justifyContent:"center",alignItems:"center",marginBottom:25}}>
+                    {currentOptionSelected==data[question].correctOptionId ? <Image source={correctCircle}/> : currentOptionSelected!=null ? <Image source={wrongCircle}/> : null}
+                    </View>
                 </View>
+
                 <View style={{flexDirection:"row",flexWrap:"wrap",justifyContent:"space-evenly"}}>
                     {data[question].options.map(option=>{
                         return(
@@ -74,7 +86,7 @@ const Flags=()=>{
                             style={{
                                 marginVertical:5,
                                 borderWidth:4,
-                                borderColor: (option.optionId==correctOption) ? "green" : option.optionId==currentOptionSelected ? "red" : 0
+                                borderColor: (option.optionId==correctOption) ? "#49FF00" : option.optionId==currentOptionSelected ? "#D72323" : 0
                             }}
                             >
                                 <Image source={option.imgUrl} style={{minHeight:105}} />
@@ -91,11 +103,11 @@ const Flags=()=>{
         if(showButton)
         {
             return(
-                <View>
+                <View style={{ justifyContent:"center",alignItems:"center",marginTop:80 }}>
                     <TouchableOpacity onPress={()=>{
                         nextQuestion();
-                    }} style={{backgroundColor:"#c4c4c4"}}>
-                    <Text>Dugme</Text>
+                    }} style={{backgroundColor:"#c4c4c4", width:256,height:75,borderRadius:20,alignItems:"center",justifyContent:"center",backgroundColor:"#0C7B93"}}>
+                    <Text style={{fontSize:20,color:"white"}}>Next question</Text>
                     </TouchableOpacity>
                 </View>
             )
