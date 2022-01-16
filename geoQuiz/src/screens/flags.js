@@ -89,7 +89,7 @@ const Flags=()=>{
                                 borderColor: (option.optionId==correctOption) ? "#49FF00" : option.optionId==currentOptionSelected ? "#D72323" : 0
                             }}
                             >
-                                <Image source={option.imgUrl} style={{width: 160, height:80}} />
+                                <Image source={option.imgUrl} style={{width: 180, height:110}} />
                             </TouchableOpacity>
                         )
                     })}
