@@ -13,13 +13,14 @@ const Stack = createNativeStackNavigator();
 const App=()=>{
 
   return(
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Flags" component={FlagsScreen} />
-        <Stack.Screen name="Monuments" component={MonumentScreen} />
-      </Stack.Navigator>
-    </NavigationContainer> 
+    
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false, cardStyle: { backgroundColor: '#142850' }}}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Flags" component={FlagsScreen} />
+          <Stack.Screen name="Monuments" component={MonumentScreen} />
+        </Stack.Navigator>
+      </NavigationContainer> 
   )
 }
 
