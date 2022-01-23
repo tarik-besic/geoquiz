@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View,Text,StyleSheet, Image } from 'react-native'
-import data from "./quizData/flag-data"
 import FlagsScreen from "./src/screens/flags"
 import HomeScreen from "./src/screens/home"
 import MonumentScreen from "./src/screens/monuments";
@@ -15,7 +14,7 @@ const App=()=>{
   return(
     
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false, cardStyle: { backgroundColor: '#142850' }}}>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Flags" component={FlagsScreen} />
           <Stack.Screen name="Monuments" component={MonumentScreen} />
