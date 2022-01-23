@@ -4,19 +4,19 @@ export default data = [{
         correctOptionId: 3,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/aww.png")
+                imgUrl: require("../assets/images/flags/aww.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/greece.png")
+                imgUrl: require("../assets/images/flags/greece.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/bww.png")
+                imgUrl: require("../assets/images/flags/bww.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/ar.png")
+                imgUrl: require("../assets/images/flags/ar.png")
             }
         ]
     },
@@ -26,19 +26,19 @@ export default data = [{
         correctOptionId: 2,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/lr.png")
+                imgUrl: require("../assets/images/flags/lr.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/my.png")
+                imgUrl: require("../assets/images/flags/my.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/us.png")
+                imgUrl: require("../assets/images/flags/us.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/xk.png")
+                imgUrl: require("../assets/images/flags/xk.png")
             }
         ]
     },
@@ -48,19 +48,19 @@ export default data = [{
         correctOptionId: 2,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/aww.png")
+                imgUrl: require("../assets/images/flags/aww.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/cx.png")
+                imgUrl: require("../assets/images/flags/cx.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/ba.png")
+                imgUrl: require("../assets/images/flags/ba.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/tokel.png")
+                imgUrl: require("../assets/images/flags/tokel.png")
             }
         ]
     }, {
@@ -69,19 +69,19 @@ export default data = [{
         correctOptionId: 3,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/fi.png")
+                imgUrl: require("../assets/images/flags/fi.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/sv.png")
+                imgUrl: require("../assets/images/flags/sv.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/nz.png")
+                imgUrl: require("../assets/images/flags/nz.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/au.png")
+                imgUrl: require("../assets/images/flags/au.png")
             }
         ]
     }, {
@@ -90,19 +90,19 @@ export default data = [{
         correctOptionId: 0,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/pe.png")
+                imgUrl: require("../assets/images/flags/pe.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/ye.png")
+                imgUrl: require("../assets/images/flags/ye.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/ca.png")
+                imgUrl: require("../assets/images/flags/ca.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/pl.png")
+                imgUrl: require("../assets/images/flags/pl.png")
             }
         ]
     } ,{
@@ -111,19 +111,19 @@ export default data = [{
         correctOptionId: 1,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/in.png")
+                imgUrl: require("../assets/images/flags/in.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/br.png")
+                imgUrl: require("../assets/images/flags/br.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/ng.png")
+                imgUrl: require("../assets/images/flags/ng.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/mx.png")
+                imgUrl: require("../assets/images/flags/mx.png")
             }
         ]
     }, {
@@ -132,19 +132,19 @@ export default data = [{
         correctOptionId: 0,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/ge.png")
+                imgUrl: require("../assets/images/flags/ge.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/gg.png")
+                imgUrl: require("../assets/images/flags/gg.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/gb-eng.png")
+                imgUrl: require("../assets/images/flags/gb-eng.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/ch.png")
+                imgUrl: require("../assets/images/flags/ch.png")
             }
         ]
     }, {
@@ -153,19 +153,19 @@ export default data = [{
         correctOptionId: 1,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/kr.png")
+                imgUrl: require("../assets/images/flags/kr.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/jp.png")
+                imgUrl: require("../assets/images/flags/jp.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/je.png")
+                imgUrl: require("../assets/images/flags/je.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/gl.png")
+                imgUrl: require("../assets/images/flags/gl.png")
             }
         ]
     }, {
@@ -174,19 +174,19 @@ export default data = [{
         correctOptionId: 1,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/sd.png")
+                imgUrl: require("../assets/images/flags/sd.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/ps.png")
+                imgUrl: require("../assets/images/flags/ps.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/jo.png")
+                imgUrl: require("../assets/images/flags/jo.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/ae.png")
+                imgUrl: require("../assets/images/flags/ae.png")
             }
         ]
     }, {
@@ -195,19 +195,19 @@ export default data = [{
         correctOptionId: 3,
         options: [{
                 optionId: 0,
-                imgUrl: require("../assets/images/paragv.png")
+                imgUrl: require("../assets/images/flags/paragv.png")
             },
             {
                 optionId: 1,
-                imgUrl: require("../assets/images/russi.png")
+                imgUrl: require("../assets/images/flags/russi.png")
             },
             {
                 optionId: 2,
-                imgUrl: require("../assets/images/slovak.png")
+                imgUrl: require("../assets/images/flags/slovak.png")
             },
             {
                 optionId: 3,
-                imgUrl: require("../assets/images/slov.png")
+                imgUrl: require("../assets/images/flags/slov.png")
             }
         ]
     }

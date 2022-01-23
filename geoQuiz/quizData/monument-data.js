@@ -1,7 +1,7 @@
 export default data = {
     staticQuestionName: "What's the name of this monument",
     questions: [{
-            imgUrl: require("../assets/images/burj.png"),
+            imgUrl: require("../assets/images/images_monuments/burj.png"),
             correctOptionId: 0,
             options: [{
                     optionId: 0,
@@ -22,7 +22,7 @@ export default data = {
             ]
         },
         {
-            imgUrl: require("../assets/images/tajMahal.png"),
+            imgUrl: require("../assets/images/images_monuments/tajMahal.png"),
             correctOptionId: 3,
             options: [{
                     optionId: 0,
@@ -43,7 +43,7 @@ export default data = {
             ]
         },
         {
-            imgUrl: require("../assets/images/white_house.png"),
+            imgUrl: require("../assets/images/images_monuments/white_house.png"),
             correctOptionId: 2,
             options: [{
                     optionId: 0,
@@ -65,7 +65,7 @@ export default data = {
             ]
         },
         {
-            imgUrl: require("../assets/images/bigBen.png"),
+            imgUrl: require("../assets/images/images_monuments/bigBen.png"),
             correctOptionId: 1,
             options: [{
                     optionId: 0,
@@ -87,7 +87,7 @@ export default data = {
             ]
         },
         {
-            imgUrl: require("../assets/images/notre.png"),
+            imgUrl: require("../assets/images/images_monuments/notre.png"),
             correctOptionId: 3,
             options: [{
                     optionId: 0,
