@@ -30,8 +30,7 @@ else{
         if(gamemode=="flags")
             setCorrectOption(flagData[question+1].correctOptionId)
         else
-            return null;
-            // setCorrectOption(populationData.questions[question+1].correctOptionId)
+            setCorrectOption(populationData.questions[question+1].correctOptionId)
 
     setCurrentOptionSelected(null);
     setShowButton(false);

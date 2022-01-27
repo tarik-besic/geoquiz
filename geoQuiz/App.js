@@ -3,6 +3,7 @@ import { View,Text,StyleSheet, Image } from 'react-native'
 import FlagsScreen from "./src/screens/flags"
 import HomeScreen from "./src/screens/home"
 import MonumentScreen from "./src/screens/monuments";
+import PopulationScreen from "./src/screens/population";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -18,6 +19,7 @@ const App=()=>{
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Flags" component={FlagsScreen} />
           <Stack.Screen name="Monuments" component={MonumentScreen} />
+          <Stack.Screen name="Population" component={PopulationScreen} />
         </Stack.Navigator>
       </NavigationContainer> 
   )
