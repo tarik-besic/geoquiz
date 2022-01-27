@@ -30,7 +30,9 @@ else{
         if(gamemode=="flags")
             setCorrectOption(flagData[question+1].correctOptionId)
         else
-            setCorrectOption(populationData.questions[question+1].correctOptionId)
+            setCorrectOption(()=>{
+                populationData[question].population>populationData[question+1].population ? populationData[question].population : populationData[question+1].population
+            })
 
     setCurrentOptionSelected(null);
     setShowButton(false);

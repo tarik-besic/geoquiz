@@ -8,21 +8,24 @@ const Population=()=>{
     const [question,setQuestion]=useState(0);
     const [showButton,setShowButton]=useState(false);
     const [score,setScore]=useState(0);
+    const [currentOptionSelected,setCurrentOptionSelected]=useState(null);
     const [correctOption,setCorrectOption]=useState(null);
     const [btnDisabled,setBtnDisabled]=useState(false); //if user can select options 
     const [showModal,setShowModal]=useState(false);
 
     const validation=(first,second)=>{
-        first=Number(first.split(" ")[0];
-        second=Number(second.split(" ")[0];
-
+        first=Number(first.split(" ")[0]);
+        second=Number(second.split(" ")[0]);
+        setCurrentOptionSelected(first);
         if(first > second)
             {
                 setScore(score+1);
                 console.log("Pogodio si")
+                setCorrectOption(first);
             }
+            else
+                setCorrectOption(first);
         setShowButton(true);
-        
     }
 
     const renderQuestion=()=>{
@@ -39,7 +42,10 @@ const Population=()=>{
                         <TouchableOpacity onPress={()=>{
                             validation(data[question].population,data[question+1].population)
                         }}>
-                            <Image source={data[question].imgUrl}/>
+                            <Image 
+                            source={data[question].imgUrl}
+                            style={styles.imageBorder}
+                            />
                         </TouchableOpacity>
                     </View>
                     <View>
@@ -52,7 +58,10 @@ const Population=()=>{
                         <TouchableOpacity onPress={()=>{
                             validation(data[question+1].population,data[question].population)
                         }}>
-                            <Image source={data[question+1].imgUrl}/>
+                            <Image 
+                            source={data[question+1].imgUrl}
+                            style={styles.imageBorder}
+                            />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -97,6 +106,10 @@ const styles=StyleSheet.create({
     },
     populationText:{
         color:"#ffffff"
+    },
+    imageBorder:{
+        borderWidth: 5,
+        borderColor: currentOptionSelected ? currentOptionSelected==correctOption ? "green" : "red" : 0 //if user selcted something, if correct then green border else red 
     }
 })
 

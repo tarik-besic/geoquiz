@@ -55,7 +55,7 @@ const Monument=()=>{
                             <TouchableOpacity key={option.optionId}
                             onPress={()=>validateAnswer(option.optionId,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton)}
                             disabled={btnDisabled}
-                            style={{backgroundColor: option.optionId==currentOptionSelected ? option.optionId==data.questions[question].correctOptionId ? "green" : "red" : "gray",
+                            style={{backgroundColor: option.optionId==correctOption ? "green" : option.optionId== currentOptionSelected ? "red" : "gray" ,
                             width:300,
                             height:50,
                             borderRadius:15,
