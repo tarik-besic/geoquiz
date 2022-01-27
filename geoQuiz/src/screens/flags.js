@@ -4,6 +4,8 @@ import { Button, StyleSheet, View , Text, Image, TouchableOpacity, SafeAreaView,
 //data
 import data from "../../quizData/flag-data";
 
+//quiz functions
+import {validateAnswer,nextQuestion} from "../utils/utilFuncs";
 //images
 import correctCircle from "../../assets/images/circleC.png"
 import wrongCircle from "../../assets/images/circleW.png"
@@ -17,34 +19,7 @@ const Flags=({navigation})=>{
     const [currentOptionSelected,setCurrentOptionSelected]=useState(null);
     const [btnDisabled,setBtnDisabled]=useState(false); //if user can select options 
     const [showModal,setShowModal]=useState(false);
-    const validation=(id)=>{
-            setBtnDisabled(true);
-            setCurrentOptionSelected(id)
-            //validating correct option
-            if(id==correctOption)
-                {
-                    setScore(score+1);
-                    console.log("You guessed it")
-                }
-            setShowButton(true);
-        }
 
-    const nextQuestion=()=>{
-        if(data[question].id==data.length-1)
-            {
-                //last question
-                setShowModal(true);
-                
-            }
-        else{
-            setQuestion(question+1);
-            setCorrectOption(data[question+1].correctOptionId); 
-            setCurrentOptionSelected(null);
-            setShowButton(false);
-            setBtnDisabled(false)
-            //is option disabled =true
-        }
-    }
     const renderQuestion=(id)=>{
         return(
                 <View style={{ backgroundColor: '#142850',height:"100%"}}>
@@ -78,7 +53,7 @@ const Flags=({navigation})=>{
                                     <TouchableOpacity 
                                     key={option.optionId}
                                     onPress={()=>{
-                                        validation(option.optionId) //answer validation
+                                        validateAnswer(option.optionId,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton) //answer validation
                                     }}
                                     disabled={btnDisabled} //setting to disabled if select i disabled
                                     style={{
@@ -139,7 +114,7 @@ const Flags=({navigation})=>{
             return(
                 <View style={{ justifyContent:"center",alignItems:"center",marginTop:80 }}>
                     <TouchableOpacity onPress={()=>{
-                        nextQuestion();
+                        nextQuestion(question,setQuestion,setCorrectOption,setCurrentOptionSelected,setShowButton,setBtnDisabled,setShowModal,'flags');
                     }} style={{backgroundColor:"#c4c4c4", width:256,height:75,borderRadius:20,alignItems:"center",justifyContent:"center",backgroundColor:"#0C7B93"}}>
                     <Text style={{fontSize:20,color:"white"}}>Next question</Text>
                     </TouchableOpacity>
