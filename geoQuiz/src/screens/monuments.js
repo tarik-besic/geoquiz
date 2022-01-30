@@ -55,7 +55,7 @@ const Monument=()=>{
                             <TouchableOpacity key={option.optionId}
                             onPress={()=>validateAnswer(option.optionId,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton)}
                             disabled={btnDisabled}
-                            style={{backgroundColor: option.optionId==currentOptionSelected ? option.optionId==data.questions[question].correctOptionId ? "green" : "red" : "gray",
+                            style={{backgroundColor: showButton ? option.optionId==data.questions[question].correctOptionId ? "#49FF00" : option.optionId==currentOptionSelected  ? "red" : "gray" : "gray",
                             width:300,
                             height:50,
                             borderRadius:15,
@@ -97,13 +97,11 @@ const Monument=()=>{
                                             borderRadius:20,
                                             justifyContent:"center",
                                             alignItems:"center"
-                                        
                                         }}
                                         >
                                         <Text style={{fontSize:25,color:"#2d2d2d"}}>Continue</Text>
                                     </TouchableOpacity>
                                     </View>
-                                    
                                 </View>
                             </Modal>
                         }
