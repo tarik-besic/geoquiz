@@ -90,6 +90,10 @@ const styles=StyleSheet.create({
     },
     populationText:{
         color:"#ffffff"
+    },
+    imageBorder:{
+        borderWidth: 5,
+        borderColor: currentOptionSelected ? currentOptionSelected==correctOption ? "green" : "red" : 0 //if user selcted something, if correct then green border else red 
     }
 })
 
