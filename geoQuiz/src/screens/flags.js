@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, View , Text, Image, TouchableOpacity, SafeAreaView, Modal} from "react-native";
+import {StyleSheet, View , Text, Image, TouchableOpacity, SafeAreaView, Modal} from "react-native";
 
 //data
 import data from "../../quizData/flag-data";
 
 //quiz functions
-import {validateAnswer,nextQuestion} from "../utils/utilFuncs";
+import {validateAnswer,renderModal,nextQuestion} from "../utils/utilFuncs";
 //images
 import correctCircle from "../../assets/images/circleC.png"
 import wrongCircle from "../../assets/images/circleW.png"
+
+//components
+import Button from "../components/Button";
 
 const Flags=({navigation})=>{
 
@@ -19,6 +22,20 @@ const Flags=({navigation})=>{
     const [currentOptionSelected,setCurrentOptionSelected]=useState(null);
     const [btnDisabled,setBtnDisabled]=useState(false); //if user can select options 
     const [showModal,setShowModal]=useState(false);
+
+    const btnData={
+        question,
+        setQuestion,
+        setCorrectOption,
+        setCurrentOptionSelected,
+        setShowButton,
+        setBtnDisabled,
+        setShowModal,
+        gamemode:"flags"
+        }
+    const modalData={
+
+    }
 
     const renderQuestion=(id)=>{
         return(
@@ -67,62 +84,11 @@ const Flags=({navigation})=>{
                                 )
                             })}
                         </View>
-                        {renderButton()}
-                        {showModal &&
-                              <Modal visible={true}>
-                                <View style={{flex:1,justifyContent:"center",alignItems:"center",backgroundColor:"#142850"}}>
-                                    <View style={{width:350,height:250,backgroundColor:"#fff",borderRadius:20,justifyContent:"center",alignItems:"center"}}>
-                                        <Text style={{fontSize:25,fontWeight:"bold",color:"#000"}}>
-                                            {score > 4 ? "Congratulations!" : "Better luck next time"}
-                                        </Text>
-                                        <Text style={{
-                                            fontSize:30,
-                                            marginVertical:25,
-                                            color: score>4 ? "#10D610" : "red"
-                                            
-                                            }}>{score} / {data.length}</Text>
-                                    <TouchableOpacity 
-                                        onPress={()=>{
-                                            navigation.navigate("Home")
-                                        }}
-                                        style={{
-                                            backgroundColor:"#4EB4D1",
-                                            width:200,
-                                            height:60,
-                                            borderRadius:20,
-                                            justifyContent:"center",
-                                            alignItems:"center"
-                                        
-                                        }}
-                                        >
-                                        <Text style={{fontSize:25,color:"#2d2d2d"}}>Continue</Text>
-                                    </TouchableOpacity>
-                                    </View>
-                                    
-                                </View>
-                                
-                                </Modal>
-                        }
+                        {showButton&& <Button data={btnData}/>}
+                        {renderModal(score,data.length,showModal,navigation,"flags")}
                     </View>
                 </View>
         )
-    }
-
-    const renderButton=()=>{
-        if(showButton)
-        {
-            return(
-                <View style={{ justifyContent:"center",alignItems:"center",marginTop:80 }}>
-                    <TouchableOpacity onPress={()=>{
-                        nextQuestion(question,setQuestion,setCorrectOption,setCurrentOptionSelected,setShowButton,setBtnDisabled,setShowModal,'flags');
-                    }} style={{backgroundColor:"#c4c4c4", width:256,height:75,borderRadius:20,alignItems:"center",justifyContent:"center",backgroundColor:"#0C7B93"}}>
-                    <Text style={{fontSize:20,color:"white"}}>Next question</Text>
-                    </TouchableOpacity>
-                </View>
-            )
-        }
-        else
-            return null;
     }
     return (
         <View>
@@ -130,24 +96,4 @@ const Flags=({navigation})=>{
         </View>
     )
 }
-
-const styles=StyleSheet.create({
-    questionTitleContainer:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:"center"
-    },
-    questionCountry:{
-        fontWeight:"700",
-        color:"#fff"
-    },
-    questionContainer:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:"center",
-        marginTop:20,
-        marginBottom:40
-    },
-})
-
 export default Flags;

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, Button, Modal } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Modal } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 //data
 import data from "../../quizData/monument-data";
 //quiz functions
 import {validateAnswer,nextQuestion} from "../utils/utilFuncs";
+
+//components
+import Button from "../components/Button";
+
 const Monument=()=>{
     const navigation=useNavigation();
     const [question, setQuestion] = useState(0);
@@ -15,22 +19,17 @@ const Monument=()=>{
     const [btnDisabled, setBtnDisabled] = useState(false);
     const [showModal,setShowModal]=useState(false);
     
-    const renderButton=()=>{
-        if(showButton)
-        {
-            return(
-                <View style={{ justifyContent:"center",alignItems:"center",marginTop:80 }}>
-                    <TouchableOpacity onPress={()=>{
-                        nextQuestion(question,setQuestion,setCorrectOption,setCurrentOptionSelected,setShowButton,setBtnDisabled,setShowModal,'monuments');
-                    }} style={{backgroundColor:"#c4c4c4", width:256,height:75,borderRadius:20,alignItems:"center",justifyContent:"center",backgroundColor:"#0C7B93"}}>
-                    <Text style={{fontSize:20,color:"white"}}>Next question</Text>
-                    </TouchableOpacity>
-                </View>
-            )
+    const btnData={
+        question,
+        setQuestion,
+        setCorrectOption,
+        setCurrentOptionSelected,
+        setShowButton,
+        setBtnDisabled,
+        setShowModal,
+        gamemode:"monuments"
         }
-        else
-            return null;
-    }
+    
     const renderQuestion=()=>{
         return(
             <View style={{backgroundColor:"#d2d2d2",width:"100%",height:"100%"}}>
@@ -71,7 +70,7 @@ const Monument=()=>{
                     })}
                 </View>
                 <View>
-                    {renderButton()}
+                    {showButton&& <Button data={btnData}/>}
                 </View>
                 {showModal &&
                             <Modal visible={true}>

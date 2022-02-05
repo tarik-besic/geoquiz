@@ -36,19 +36,20 @@ else{
 }
 }
 
-const renderModal=(score,length,showModal,navigation)=>{
+const renderModal=(score,length,showModal,navigation,gamemode)=>{
+    let min= gamemode=="monuments" ? 2 : 5;   //if gamemode is monments then min is 2 else the other 2 gamemodes have the same limit 5
     if(showModal)
     return(
             <Modal visible={true}>
                 <View style={{flex:1,justifyContent:"center",alignItems:"center",backgroundColor:"#142850"}}>
                     <View style={{width:350,height:250,backgroundColor:"#fff",borderRadius:20,justifyContent:"center",alignItems:"center"}}>
                         <Text style={{fontSize:25,fontWeight:"bold",color:"#000"}}>
-                            {score > 2 ? "Congratulations!" : "Better luck next time"}
+                            { score>min ? "Congratulations!" : "Better luck next time"}
                         </Text>
                         <Text style={{
                             fontSize:30,
                             marginVertical:25,
-                            color: score>2 ? "#10D610" : "red"
+                            color: score>min ? "#10D610" : "red"
                             
                             }}>{score} / {length}</Text>
                     <TouchableOpacity 
@@ -73,7 +74,6 @@ const renderModal=(score,length,showModal,navigation)=>{
     )
     else return null
 }
-
 export {
     validateAnswer,
     nextQuestion,
