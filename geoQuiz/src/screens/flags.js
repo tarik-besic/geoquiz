@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {StyleSheet, View , Text, Image, TouchableOpacity, SafeAreaView, Modal} from "react-native";
+import {View , Text, Image, TouchableOpacity} from "react-native";
 
 //data
 import data from "../../quizData/flag-data";
@@ -12,6 +12,7 @@ import wrongCircle from "../../assets/images/circleW.png"
 
 //components
 import Button from "../components/Button";
+import Modal from "../components/Modalcomp";
 
 const Flags=({navigation})=>{
 
@@ -34,10 +35,13 @@ const Flags=({navigation})=>{
         gamemode:"flags"
         }
     const modalData={
-
+        score,
+        length:data.length,
+        navigation,
+        gamemode:"flags"
     }
 
-    const renderQuestion=(id)=>{
+    const renderQuestion=()=>{
         return(
                 <View style={{ backgroundColor: '#142850',height:"100%"}}>
                     <View style={{flexDirection:"row", justifyContent:"space-between"}}>
@@ -84,15 +88,15 @@ const Flags=({navigation})=>{
                                 )
                             })}
                         </View>
-                        {showButton&& <Button data={btnData}/>}
-                        {renderModal(score,data.length,showModal,navigation,"flags")}
+                        {showButton ? <Button data={btnData}/> : null}
+                        {showModal ? <Modal data={modalData}/> : null}
                     </View>
                 </View>
         )
     }
     return (
         <View>
-            {renderQuestion(question)}
+            {renderQuestion()}
         </View>
     )
 }

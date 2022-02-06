@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, Modal } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 //data
 import data from "../../quizData/monument-data";
 //quiz functions
-import {validateAnswer,nextQuestion} from "../utils/utilFuncs";
+import {validateAnswer} from "../utils/utilFuncs";
 
 //components
 import Button from "../components/Button";
+import Modal from "../components/Modalcomp";
 
 const Monument=()=>{
     const navigation=useNavigation();
@@ -29,7 +30,12 @@ const Monument=()=>{
         setShowModal,
         gamemode:"monuments"
         }
-    
+    const modalData={
+        score,
+        length:data.questions.length,
+        navigation,
+        gamemode:"monuments"
+    }
     const renderQuestion=()=>{
         return(
             <View style={{backgroundColor:"#d2d2d2",width:"100%",height:"100%"}}>
@@ -72,40 +78,9 @@ const Monument=()=>{
                 <View>
                     {showButton&& <Button data={btnData}/>}
                 </View>
-                {showModal &&
-                            <Modal visible={true}>
-                                <View style={{flex:1,justifyContent:"center",alignItems:"center",backgroundColor:"#142850"}}>
-                                    <View style={{width:350,height:250,backgroundColor:"#fff",borderRadius:20,justifyContent:"center",alignItems:"center"}}>
-                                        <Text style={{fontSize:25,fontWeight:"bold",color:"#000"}}>
-                                            {score > 2 ? "Congratulations!" : "Better luck next time"}
-                                        </Text>
-                                        <Text style={{
-                                            fontSize:30,
-                                            marginVertical:25,
-                                            color: score>2 ? "#10D610" : "red"
-                                            
-                                            }}>{score} / {data.questions.length}</Text>
-                                    <TouchableOpacity 
-                                        onPress={()=>{
-                                            navigation.navigate("Home")
-                                        }}
-                                        style={{
-                                            backgroundColor:"#4EB4D1",
-                                            width:200,
-                                            height:60,
-                                            borderRadius:20,
-                                            justifyContent:"center",
-                                            alignItems:"center"
-                                        }}
-                                        >
-                                        <Text style={{fontSize:25,color:"#2d2d2d"}}>Continue</Text>
-                                    </TouchableOpacity>
-                                    </View>
-                                </View>
-                            </Modal>
-                        }
+                {showModal ? <Modal data={modalData} /> : null}
             </View>
-        )
+        )   
     }
     
     return(
@@ -114,14 +89,6 @@ const Monument=()=>{
             renderQuestion()
         }
         </View>
-        
     )
 }
-const styles=StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:"center",
-        alignItems:"center"
-    }
-})
 export default Monument

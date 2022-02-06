@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { View , Text, TouchableOpacity, Image, Modal} from "react-native";
+import { View , Text, TouchableOpacity, Image} from "react-native";
 //data
 import data from '../../quizData/population';
 
 //util functions
-import {nextQuestion,renderModal,validateAnswer} from "../utils/utilFuncs";
+import {validateAnswer} from "../utils/utilFuncs";
 
 //components
 import Button from "../components/Button";
+import Modal from "../components/Modalcomp";
 
 const Population=({navigation})=>{
     const [question,setQuestion]=useState(0);
@@ -27,6 +28,12 @@ const Population=({navigation})=>{
         setBtnDisabled,
         setShowModal,
         gamemode:"population"
+        }
+        const modalData={
+            score,
+            length:data.length,
+            navigation,
+            gamemode:"population"
         }
     
     const renderQuestion=()=>{
@@ -64,11 +71,8 @@ const Population=({navigation})=>{
                         })}
                     </View>
                 </View>
-                {/* {renderButton(showButton,question,setQuestion,setCorrectOption,setCurrentOptionSelected,setShowButton,setBtnDisabled,setShowModal,"population")} */}
-                {
-                showButton && <Button data={btnData} />
-                }
-                {renderModal(score,data.length,showModal,navigation)}
+                {showButton ? <Button data={btnData} /> : null}
+                {showModal ? <Modal data={modalData} /> : null}
             </View>
         )
     }
