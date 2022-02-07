@@ -3,6 +3,11 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { shuffleMonuments } from "../../quizData/monument-data";
 import { shufflePopulation } from "../../quizData/population";
 import { shuffleFlags } from "../../quizData/flag-data";
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+ 'Non-serializable values were found in the navigation state',
+]);
 
 const Home=({navigation,route})=>{
     const [randomizeData,setRandomizeData] = useState(false);
