@@ -1,6 +1,8 @@
-const data = [{
+import { shuffleData } from "../src/utils/utilFuncs";
+
+let data = [{
         correctOptionId: 0,
-        countries: [{
+        options: [{
             id: 0,
             name: "USA",
             population: "329.5 million",
@@ -14,7 +16,7 @@ const data = [{
     },
     {
         correctOptionId: 1,
-        countries: [{
+        options: [{
             id: 0,
             name: "PERU",
             population: "32.97 million",
@@ -28,7 +30,7 @@ const data = [{
     },
     {
         correctOptionId: 1,
-        countries: [{
+        options: [{
             id: 0,
             name: "SOUTH KOREA",
             population: "51.78 million",
@@ -42,7 +44,7 @@ const data = [{
     },
     {
         correctOptionId: 0,
-        countries: [{
+        options: [{
             id: 0,
             name: "MEXICO",
             population: "128.9 million",
@@ -56,7 +58,7 @@ const data = [{
     },
     {
         correctOptionId: 1,
-        countries: [{
+        options: [{
             id: 0,
             name: "BOSNIA AND HERZEGOVINA",
             population: "3.28 million",
@@ -70,7 +72,7 @@ const data = [{
     },
     {
         correctOptionId: 1,
-        countries: [{
+        options: [{
             id: 0,
             name: "POLAND",
             population: "37.95 million",
@@ -85,7 +87,7 @@ const data = [{
     },
     {
         correctOptionId: 0,
-        countries: [{
+        options: [{
             id: 0,
             name: "JORDAN",
             population: "10.2 million",
@@ -100,7 +102,7 @@ const data = [{
     },
     {
         correctOptionId: 1,
-        countries: [{
+        options: [{
             id: 0,
             name: "GREECE",
             population: "10.72 million",
@@ -115,7 +117,7 @@ const data = [{
     },
     {
         correctOptionId: 1,
-        countries: [{
+        options: [{
             id: 0,
             name: "SLOVENIA",
             population: "2.1 million",
@@ -130,7 +132,7 @@ const data = [{
     },
     {
         correctOptionId: 0,
-        countries: [{
+        options: [{
             id: 0,
             name: "NEW ZEALAND",
             population: "5.08 million",
@@ -145,4 +147,11 @@ const data = [{
     }
 ]
 
-export default data;
+    const shufflePopulation=()=>{
+        data=shuffleData(data);
+    }
+
+export {
+    data,
+    shufflePopulation
+};

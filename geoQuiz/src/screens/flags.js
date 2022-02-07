@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import {View , Text, Image, TouchableOpacity} from "react-native";
 
 //data
-import data from "../../quizData/flag-data";
+import {data} from "../../quizData/flag-data";
 
 //quiz functions
-import {validateAnswer,renderModal,nextQuestion} from "../utils/utilFuncs";
+import {validateAnswer} from "../utils/utilFuncs";
 //images
 import correctCircle from "../../assets/images/circleC.png"
 import wrongCircle from "../../assets/images/circleW.png"
@@ -14,7 +14,7 @@ import wrongCircle from "../../assets/images/circleW.png"
 import Button from "../components/Button";
 import Modal from "../components/Modalcomp";
 
-const Flags=({navigation})=>{
+const Flags=({navigation,route})=>{
 
     const [question,setQuestion]=useState(0);
     const [showButton,setShowButton]=useState(0);
@@ -32,13 +32,17 @@ const Flags=({navigation})=>{
         setShowButton,
         setBtnDisabled,
         setShowModal,
-        gamemode:"flags"
+        nextQuestionCorrectOption: data.length-1 > question ? data[question+1].correctOptionId : null,
+        gamemode:"flags",
+        lastQuestion:data.length-1
         }
     const modalData={
         score,
         length:data.length,
         navigation,
-        gamemode:"flags"
+        gamemode:"flags",
+        setRandomizeData:route.params.setRandomizeData,
+        randomizeData:route.params.randomizeData
     }
 
     const renderQuestion=()=>{

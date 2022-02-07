@@ -18,7 +18,8 @@ const ModalComp = ({data}) => {
                             }}>{data.score} / {data.length}</Text>
                     <TouchableOpacity 
                         onPress={()=>{
-                            data.navigation.navigate("Home")
+                            data.setRandomizeData(true);
+                            data.navigation.navigate("Home",{gamemode:data.gamemode})
                         }}
                         style={{
                             backgroundColor:"#4EB4D1",

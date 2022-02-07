@@ -1,8 +1,19 @@
-import React from "react";
-import { Button, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-const Home=()=>{
-    const navigation=useNavigation();
+import React,{useEffect, useState} from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { shuffleMonuments } from "../../quizData/monument-data";
+import { shufflePopulation } from "../../quizData/population";
+import { shuffleFlags } from "../../quizData/flag-data";
+
+const Home=({navigation,route})=>{
+    const [randomizeData,setRandomizeData] = useState(false);
+    //randoming data in home screen
+    useEffect(()=>{
+        if(randomizeData)
+        {
+            route.params?.gamemode=="flags" ? shuffleFlags() : route.params?.gamemode=="monuments" ? shuffleMonuments() : shufflePopulation()
+            setRandomizeData(false);
+        }
+    },[randomizeData])
     return (
     <View>
         <View style={{marginVertical:20}}>
@@ -15,7 +26,7 @@ const Home=()=>{
             <TouchableOpacity 
             style={styles.btn}
             onPress={()=>{
-                navigation.navigate("Flags")
+                navigation.navigate("Flags",{setRandomizeData,randomizeData})
             }}          
             >
             <Text>
@@ -26,7 +37,7 @@ const Home=()=>{
             <TouchableOpacity
                 style={styles.btn}
                 onPress={()=>{
-                    navigation.navigate("Monuments");
+                    navigation.navigate("Monuments",{setRandomizeData,randomizeData});
                     }}>
             <Text>
                 MONUMENTS
@@ -35,7 +46,7 @@ const Home=()=>{
         
             <TouchableOpacity
                 style={styles.btn}
-                onPress={()=>navigation.navigate("Population")}>
+                onPress={()=>navigation.navigate("Population",{setRandomizeData,randomizeData})}>
 
             <Text>
                 POPULATION

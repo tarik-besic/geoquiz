@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { View , Text, TouchableOpacity, Image} from "react-native";
 //data
-import data from '../../quizData/population';
+import {data} from '../../quizData/population';
 
 //util functions
 import {validateAnswer} from "../utils/utilFuncs";
@@ -10,7 +10,14 @@ import {validateAnswer} from "../utils/utilFuncs";
 import Button from "../components/Button";
 import Modal from "../components/Modalcomp";
 
-const Population=({navigation})=>{
+const Population=({navigation,route})=>{
+    // useEffect(() => {
+
+    //     if(route.params.randomizeData)
+    //         route.params.setRandomizeData(false);
+    //         console.log("Ide use effect iz monumenata")
+
+    //     }, []);
     const [question,setQuestion]=useState(0);
     const [showButton,setShowButton]=useState(false);
     const [score,setScore]=useState(0);
@@ -27,13 +34,17 @@ const Population=({navigation})=>{
         setShowButton,
         setBtnDisabled,
         setShowModal,
-        gamemode:"population"
+        nextQuestionCorrectOption: data.length-1 > question ? data[question+1].correctOptionId : null,
+        gamemode:"population",
+        lastQuestion:data.length-1
         }
         const modalData={
             score,
             length:data.length,
             navigation,
-            gamemode:"population"
+            gamemode:"population",
+            setRandomizeData:route.params.setRandomizeData,
+            randomizeData:route.params.randomizeData
         }
     
     const renderQuestion=()=>{
@@ -41,13 +52,13 @@ const Population=({navigation})=>{
             <View>
                 <View>
                     <View>
-                        {data[question].countries.map((country,value)=>{
+                        {data[question].options.map((country,value)=>{
                             return(
                                 <View key={country.id}>
-                                    <Text>{data[question].countries[value].name}</Text>
+                                    <Text>{data[question].options[value].name}</Text>
                                     {showButton && 
                                         <Text style={{color:"#ffffff"}}>
-                                            {data[question].countries[value].population}
+                                            {data[question].options[value].population}
                                         </Text>
                                     }
                                     <TouchableOpacity 
@@ -57,7 +68,7 @@ const Population=({navigation})=>{
                                     disabled={btnDisabled}
                                     >
                                         <Image 
-                                        source={data[question].countries[value].imgUrl}
+                                        source={data[question].options[value].imgUrl}
                                         style={{
                                             width: 180,
                                             height:110,

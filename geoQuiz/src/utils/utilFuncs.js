@@ -1,6 +1,20 @@
-import monumentData from "../../quizData/monument-data";
-import flagData from "../../quizData/flag-data";
-import populationData from '../../quizData/population';
+//  shuffle array
+const randomize = data => {
+    for (let i = data.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [data[i], data[j]] = [data[j], data[i]];
+    }
+    return data;
+};
+
+const shuffleData = (data) => {
+    data=randomize(data);
+    //shuffling options
+    data = data.map(question => {
+      return {...question, options: randomize(question.options)};
+    });
+    return data;
+  };
 
 const validateAnswer=(id,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton)=>{
     setBtnDisabled(true);
@@ -11,9 +25,7 @@ const validateAnswer=(id,setBtnDisabled,setCurrentOptionSelected,correctOption,s
     }
     setShowButton(true);
 }
-const nextQuestion=(question,setQuestion,setCorrectOption,setCurrentOptionSelected,setShowButton,setBtnDisabled,setShowModal,gamemode)=>{
-    //quizLength
-    let lastQuestion=gamemode=="flags" ? flagData.length-1 : gamemode=="monuments" ? monumentData.questions.length-1 : populationData.length-1;
+const nextQuestion=(question,setQuestion,setCorrectOption,setCurrentOptionSelected,setShowButton,setBtnDisabled,setShowModal,nextQuestionCorrectOption,gamemode,lastQuestion)=>{
     if(question==lastQuestion)
     {
         //last question
@@ -22,20 +34,21 @@ const nextQuestion=(question,setQuestion,setCorrectOption,setCurrentOptionSelect
     else{
         setQuestion(question+1);
         if(gamemode=="monuments")
-            setCorrectOption(monumentData.questions[question+1].correctOptionId)
+            setCorrectOption(nextQuestionCorrectOption)
         else
             if(gamemode=="flags")
-                setCorrectOption(flagData[question+1].correctOptionId)
+                setCorrectOption(nextQuestionCorrectOption)
             else
-                setCorrectOption(populationData[question+1].correctOptionId)
+                setCorrectOption(nextQuestionCorrectOption)
         setCurrentOptionSelected(null);
         setShowButton(false);
-        setBtnDisabled(false)
+        setBtnDisabled(false);
     }
 }
 
 
 export {
     validateAnswer,
-    nextQuestion
+    nextQuestion,
+    shuffleData
 } 
