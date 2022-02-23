@@ -1,10 +1,11 @@
 import React,{useEffect, useState} from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, ImageBackground, Image } from "react-native";
 import { shuffleMonuments } from "../../quizData/monument-data";
 import { shufflePopulation } from "../../quizData/population";
 import { shuffleFlags } from "../../quizData/flag-data";
 import { LogBox } from 'react-native';
-
+import bgImage from "../../assets/images/bgImage.png";
+import logo from "../../assets/images/logo.png";
 LogBox.ignoreLogs([
  'Non-serializable values were found in the navigation state',
 ]);
@@ -21,44 +22,58 @@ const Home=({navigation,route})=>{
     },[randomizeData])
     return (
     <View>
-        <View style={{marginVertical:20}}>
-            <Text style={styles.text}>
-                GeoQuiz
-            </Text>
-        </View>
+        <ImageBackground source={bgImage} style={{
+            width:"100%",
+            height:"100%"
+            }}>
+            <View style={{
+                marginVertical:20,
+                justifyContent:"center",
+                alignItems:"center"
+                }}>
+                <Image source={logo} />
+                <Text style={{fontSize:25,color:"#ffffff"}}>
+                    GeoQuiz
+                </Text>
+            </View>
 
-        <View>
-            <TouchableOpacity 
-            style={styles.btn}
-            onPress={()=>{
-                navigation.navigate("Flags",{setRandomizeData,randomizeData})
-            }}          
-            >
-            <Text>
-                FLAGS
-            </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.btn}
+            <View style={{
+                justifyContent:"center",
+                alignItems:"center",
+                marginTop:40
+                }}>
+                <TouchableOpacity 
+                style={{...styles.btn, backgroundColor:"#529f4685"}}
                 onPress={()=>{
-                    navigation.navigate("Monuments",{setRandomizeData,randomizeData});
-                    }}>
-            <Text>
-                MONUMENTS
-            </Text>
-            </TouchableOpacity>
-        
-            <TouchableOpacity
-                style={styles.btn}
-                onPress={()=>navigation.navigate("Population",{setRandomizeData,randomizeData})}>
+                    navigation.navigate("Flags",{setRandomizeData,randomizeData})
+                }}          
+                >
+                <Text style={styles.text}>
+                    FLAGS
+                </Text>
+                </TouchableOpacity>
 
-            <Text>
-                POPULATION
-            </Text>
+                <TouchableOpacity
+                    style={{...styles.btn, backgroundColor:"#d9d229a8"}}
+                    onPress={()=>{
+                        navigation.navigate("Monuments",{setRandomizeData,randomizeData});
+                        }}>
+                <Text style={styles.text}>
+                    MONUMENTS
+                </Text>
+                </TouchableOpacity>
             
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity
+                    style={{...styles.btn, backgroundColor:"#4EB4D1"}}
+                    onPress={()=>navigation.navigate("Population",{setRandomizeData,randomizeData})}>
+
+                <Text style={styles.text}>
+                    POPULATION
+                </Text>
+                
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
     </View>
     )
 }
@@ -68,17 +83,16 @@ const styles=StyleSheet.create({
         flex:1
     },  
     btn:{
-        backgroundColor:"#0D7377",
         justifyContent:"center",
         alignItems:"center",
-        marginHorizontal:20,
         marginVertical:10,
-        flexDirection:"row",
-        height:75
+        height:75,
+        width:"70%",
+        borderRadius:17,        
     },
     text:{
         fontSize:20,
-        fontWeight:"700", 
+        color:"#ffffff", 
         textAlign:"center"
         }
     }

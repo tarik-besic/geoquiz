@@ -11,13 +11,7 @@ import Button from "../components/Button";
 import Modal from "../components/Modalcomp";
 
 const Population=({navigation,route})=>{
-    // useEffect(() => {
-
-    //     if(route.params.randomizeData)
-    //         route.params.setRandomizeData(false);
-    //         console.log("Ide use effect iz monumenata")
-
-    //     }, []);
+    
     const [question,setQuestion]=useState(0);
     const [showButton,setShowButton]=useState(false);
     const [score,setScore]=useState(0);
