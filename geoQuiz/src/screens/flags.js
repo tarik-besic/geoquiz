@@ -47,32 +47,66 @@ const Flags=({navigation,route})=>{
 
     const renderQuestion=()=>{
         return(
-                <View style={{ backgroundColor: '#142850',height:"100%"}}>
-                    <View style={{flexDirection:"row", justifyContent:"space-between"}}>
-                        <Text style={{marginLeft:5, fontSize:24, color:"#22AE0B"}}>Score: {score}</Text> 
-                        <Text style={{marginRight:5, fontSize:24, color:"#ffffff"}}>{question+1}/ {data.length}</Text>
+                <View style={{
+                     backgroundColor: '#EEEEEE',
+                     height:"100%"
+                    }}>
+                    <View style={{
+                        flexDirection:"row",
+                        height:56,
+                        justifyContent:"space-between",
+                        alignItems:"center",
+                        backgroundColor: '#222831',
+                        borderTopLeftRadius:0,
+                        borderTopRightRadius:0,
+                        borderBottomLeftRadius:20,
+                        borderBottomRightRadius:20,
+                        paddingHorizontal:15,
+                        borderBottomWidth:2,
+                        borderBottomColor:'#00000011', 
+                    }}>
+                        <Text style={{marginLeft:5, fontSize:25,fontWeight:"bold",color:"#00ADB5",}}>Score: {score}</Text> 
+                        <Text style={{marginRight:5, fontSize:25,fontWeight:"bold",color:"#00ADB5",}}>{question+1}/ {data.length}</Text>
                     </View>
-                    <View >
-                        <Text style={{textAlign:"center", fontSize:30,color:"#fff",marginVertical:30}}>
+                    <View style={{
+                        alignItems:'center',
+                        justifyContent:"center"
+                    }}>
+                        <Text style={{
+                            fontSize:30,
+                            color:"#393E46",
+                            marginTop:15,
+                            fontWeight:"bold"
+                            }}>
                             Guess the Country
                         </Text>
 
                         <View >
                             <Text style={
-                                {textAlign:"center",
-                                fontSize:30,
-                                marginBottom:30,
+                                {
+                                fontSize:25,
                                 fontWeight:"bold",
-                                color: currentOptionSelected==data[question].correctOptionId ? "#49FF00" : btnDisabled ? "#D72323" : "#c4c4c4"
+                                color: currentOptionSelected==data[question].correctOptionId ? "#49FF00" : btnDisabled ? "#D72323" : "#393E46"
                                 }} >
                                 {data[question].question}
                             </Text>
                             <View style={{justifyContent:"center",alignItems:"center",marginBottom:25}}>
-                            {currentOptionSelected==data[question].correctOptionId ? <Image source={correctCircle}/> : currentOptionSelected!=null ? <Image source={wrongCircle}/> : null}
+                            {currentOptionSelected==data[question].correctOptionId ? <Image source={correctCircle} style={{width:35,height:35}}/> : currentOptionSelected!=null ? <Image source={wrongCircle} style={{width:35,height:35}}/> : null}
                             </View>
                         </View>
 
-                        <View style={{flexDirection:"row",flexWrap:"wrap",justifyContent:"space-evenly"}}>
+                        <View style={{
+                            flexDirection:"row",
+                            flexWrap:"wrap",
+                            justifyContent:"space-evenly",
+                            backgroundColor:"#222831",
+                            borderTopEndRadius:30,
+                            borderTopStartRadius:30,
+                            borderBottomEndRadius:30,
+                            borderBottomStartRadius:30,
+                            paddingVertical:35,
+                            width:"95%"
+                            }}>
                             {data[question].options.map(option=>{
                                 return(
                                     <TouchableOpacity 
@@ -87,7 +121,7 @@ const Flags=({navigation,route})=>{
                                         borderColor: showButton ? (option.optionId==correctOption) ? "#49FF00" : option.optionId==currentOptionSelected ? "#D72323" : 0 : 0
                                     }}
                                     >
-                                        <Image source={option.imgUrl} style={{width: 180, height:110}} />
+                                        <Image source={option.imgUrl} style={{width: 150, height:90}} />
                                     </TouchableOpacity>
                                 )
                             })}
