@@ -8,6 +8,10 @@ import {data} from "../../quizData/monument-data";
 //components
 import Button from "../components/Button";
 import Modal from "../components/Modalcomp";
+import Header from "../components/Header";
+
+//COLORS
+import COLORS from "../../assets/colors/colors";
 
 const Monument=({navigation,route})=>{
     
@@ -39,49 +43,74 @@ const Monument=({navigation,route})=>{
         setRandomizeData:route.params.setRandomizeData,
         randomizeData:route.params.randomizeData
     }
+    const headerData={
+        question,
+        score,
+        length:data.length,
+        header:COLORS.MONUMENTS.header,
+        headerText:COLORS.MONUMENTS.headerText,
+    }
     const renderQuestion=()=>{
         return(
-            <View style={{backgroundColor:"#d2d2d2",width:"100%",height:"100%"}}>
-                <View style={{flexDirection:"row", justifyContent:"space-between"}}>
-                        <Text style={{marginLeft:5, fontSize:24, color:"#22AE0B"}}>Score: {score}</Text> 
-                        <Text style={{marginRight:5, fontSize:24, color:"#ffffff"}}>{question+1}/ {data.length}</Text>
+            <View style={{
+                backgroundColor:COLORS.MONUMENTS.background,
+                width:"100%",
+                height:"100%",
+                }}>
+                    <Header data={headerData}/>
+                <View style={{
+                    justifyContent:"center",
+                    alignItems:'center'
+                }}>
+                        <Text style={{
+                            fontSize:20,
+                            fontWeight:"bold",
+                            color:COLORS.MONUMENTS.heading,
+                            marginBottom:10
+                        }}>
+                            WHAT'S THE NAME OF THIS MONUMENT
+                        </Text>
+                    <View>
+                        <Image 
+                        source={data[question].imgUrl}
+                        style={{
+                            width:200,
+                            height:200,
+                            borderRadius:10
+                        }}
+                        />
                     </View>
-                <View>
-                    <Text>
-                        {data.staticQuestionName}
-                    </Text>
-                </View>
-                <View>
-                    <Image 
-                    source={data[question].imgUrl}
-                    style={{width:100,height:100}}
-                    />
-                </View>
-                <View>
-                    {data[question].options.map((option)=>{
-                        return(
-                            <TouchableOpacity key={option.optionId}
-                            onPress={()=>validateAnswer(option.optionId,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton)}
-                            disabled={btnDisabled}
-                            style={{backgroundColor: showButton ? option.optionId==data[question].correctOptionId ? "#49FF00" : option.optionId==currentOptionSelected  ? "red" : "gray" : "gray",
-                            width:300,
-                            height:50,
-                            borderRadius:15,
-                            marginVertical:10,
-                            justifyContent:'center',
-                            alignItems:'center'}}
-                            >
-                                <Text style={{fontSize:24,fontWeight:"500"}}>
-                                    {option.name}
-                                </Text>
-                            </TouchableOpacity>
-                        )
-                    })}
-                </View>
-                <View>
-                    {showButton&& <Button data={btnData}/>}
-                </View>
-                {showModal ? <Modal data={modalData} /> : null}
+                    <View>
+                        {data[question].options.map((option)=>{
+                            return(
+                                <TouchableOpacity key={option.optionId}
+                                onPress={()=>validateAnswer(option.optionId,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton)}
+                                disabled={btnDisabled}
+                                style={{backgroundColor: showButton ? option.optionId==data[question].correctOptionId ? "#49FF00" : option.optionId==currentOptionSelected  ? "red" : COLORS.MONUMENTS.gray : COLORS.MONUMENTS.gray,
+                                width:300,
+                                height:50,
+                                borderRadius:15,
+                                marginVertical:10,
+                                justifyContent:'center',
+                                alignItems:'center'
+                            }}
+                                >
+                                    <Text style={{
+                                        fontSize:24,
+                                        fontWeight:"500",
+                                        color:COLORS.MONUMENTS.white
+                                        }}>
+                                        {option.name}
+                                    </Text>
+                                </TouchableOpacity>
+                            )
+                        })}
+                    </View>
+                    <View>
+                        {showButton&& <Button data={btnData}/>}
+                    </View>
+                    {showModal ? <Modal data={modalData} /> : null}
+                </View>                
             </View>
         )   
     }

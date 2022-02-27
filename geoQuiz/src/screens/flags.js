@@ -13,6 +13,7 @@ import wrongCircle from "../../assets/images/circleW.png"
 //components
 import Button from "../components/Button";
 import Modal from "../components/Modalcomp";
+import Header from "../components/Header";
 
 //colors
 import COLORS from "../../assets/colors/colors";
@@ -47,37 +48,28 @@ const Flags=({navigation,route})=>{
         setRandomizeData:route.params.setRandomizeData,
         randomizeData:route.params.randomizeData
     }
+    const headerData={
+        question,
+        score,
+        length:data.length,
+        header:COLORS.FLAGS.header,
+        headerText:COLORS.FLAGS.headerText,
+    }
 
     const renderQuestion=()=>{
         return(
                 <View style={{
-                     backgroundColor: COLORS.background,
+                     backgroundColor: COLORS.FLAGS.background,
                      height:"100%"
                     }}>
-                    <View style={{
-                        flexDirection:"row",
-                        height:56,
-                        justifyContent:"space-between",
-                        alignItems:"center",
-                        backgroundColor: COLORS.grenMain,
-                        borderTopLeftRadius:0,
-                        borderTopRightRadius:0,
-                        borderBottomLeftRadius:20,
-                        borderBottomRightRadius:20,
-                        paddingHorizontal:15,
-                        borderBottomWidth:2,
-                        borderBottomColor:'#00000011', 
-                    }}>
-                        <Text style={{marginLeft:5, fontSize:25,fontWeight:"bold",color:COLORS.greenDark}}>Score: {score}</Text> 
-                        <Text style={{marginRight:5, fontSize:25,fontWeight:"bold",color:COLORS.greenDark}}>{question+1}/ {data.length}</Text>
-                    </View>
+                      <Header data={headerData}/>
                     <View style={{
                         alignItems:'center',
                         justifyContent:"center"
                     }}>
                         <Text style={{
                             fontSize:30,
-                            color:"#fff",
+                            // color:COLORS.FLAGS.yellow,
                             marginTop:15,
                             fontWeight:"bold"
                             }}>
@@ -88,7 +80,7 @@ const Flags=({navigation,route})=>{
                             <Text style={{
                                 fontSize:25,
                                 fontWeight:"bold",
-                                color: currentOptionSelected==data[question].correctOptionId ? COLORS.correct : btnDisabled ? COLORS.incorrect : COLORS.black
+                                color: currentOptionSelected==data[question].correctOptionId ? COLORS.FLAGS.correct : btnDisabled ? COLORS.FLAGS.incorrect : COLORS.FLAGS.black
                                 }} >
                                 {data[question].question}
                             </Text>
@@ -101,7 +93,7 @@ const Flags=({navigation,route})=>{
                             flexDirection:"row",
                             flexWrap:"wrap",
                             justifyContent:"space-evenly",
-                            backgroundColor:COLORS.grenMain,
+                            backgroundColor:COLORS.FLAGS.header,
                             borderTopEndRadius:30,
                             borderTopStartRadius:30,
                             borderBottomEndRadius:30,
@@ -120,7 +112,7 @@ const Flags=({navigation,route})=>{
                                     style={{
                                         marginVertical:5,
                                         borderWidth:4,
-                                        borderColor: showButton ? (option.optionId==correctOption) ? COLORS.correct : option.optionId==currentOptionSelected ? COLORS.incorrect : 0 : 0
+                                        borderColor: showButton ? (option.optionId==correctOption) ? COLORS.FLAGS.correct : option.optionId==currentOptionSelected ? COLORS.FLAGS.incorrect : 0 : 0
                                     }}
                                     >
                                         <Image source={option.imgUrl} style={{width: 150, height:90}} />
@@ -128,7 +120,7 @@ const Flags=({navigation,route})=>{
                                 )
                             })}
                         </View>
-                        {showButton ? <Button data={btnData} style={{backgroundColor:COLORS.yellow, color:"#fff"}}/> : null}
+                        {showButton ? <Button data={btnData} style={{backgroundColor:COLORS.FLAGS.yellow, color:"#fff"}}/> : null}
                         {showModal ? <Modal data={modalData}/> : null}
                     </View>
                 </View>
