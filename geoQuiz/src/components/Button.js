@@ -2,7 +2,7 @@ import React from 'react';
 import {View , Text, TouchableOpacity} from "react-native";
 import {nextQuestion} from "../utils/utilFuncs";
 
-const Button = ({data}) => {
+const Button = ({data,style}) => {
   return (
             <View style={{
               justifyContent:"center",
@@ -17,10 +17,10 @@ const Button = ({data}) => {
                   borderRadius:20,
                   alignItems:"center",
                   justifyContent:"center",
-                  backgroundColor:"#222831"}}>
+                  ...style
+                  }}>
                 <Text style={{
                   fontSize:30,
-                  color:"#00ADB5",
                   fontWeight:"bold"
                   }}>CONTINUE</Text>
                 </TouchableOpacity>
