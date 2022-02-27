@@ -6,6 +6,9 @@ import { shuffleFlags } from "../../quizData/flag-data";
 import { LogBox } from 'react-native';
 import bgImage from "../../assets/images/bgImage.png";
 import logo from "../../assets/images/logo.png";
+
+//COLORS
+import COLORS from "../../assets/colors/colors";
 LogBox.ignoreLogs([
  'Non-serializable values were found in the navigation state',
 ]);
@@ -43,7 +46,7 @@ const Home=({navigation,route})=>{
                 marginTop:40
                 }}>
                 <TouchableOpacity 
-                style={{...styles.btn, backgroundColor:"#529f4685"}}
+                style={{...styles.btn, backgroundColor:COLORS.MAIN.green}}
                 onPress={()=>{
                     navigation.navigate("Flags",{setRandomizeData,randomizeData})
                 }}          
@@ -54,7 +57,7 @@ const Home=({navigation,route})=>{
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={{...styles.btn, backgroundColor:"#d9d229a8"}}
+                    style={{...styles.btn, backgroundColor:COLORS.MAIN.blue}}
                     onPress={()=>{
                         navigation.navigate("Monuments",{setRandomizeData,randomizeData});
                         }}>
@@ -64,7 +67,7 @@ const Home=({navigation,route})=>{
                 </TouchableOpacity>
             
                 <TouchableOpacity
-                    style={{...styles.btn, backgroundColor:"#4EB4D1"}}
+                    style={{...styles.btn, backgroundColor:COLORS.MAIN.yellow}}
                     onPress={()=>navigation.navigate("Population",{setRandomizeData,randomizeData})}>
 
                 <Text style={styles.text}>
