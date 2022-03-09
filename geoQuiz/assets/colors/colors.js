@@ -21,6 +21,11 @@ const COLORS={
         heading:"#FFF",
         wrap:"#D5DCEC",
         gray:"#8F8F8F"
+    },
+    FLAGS:{
+        background:"#E3E3E2",
+        white:"#fff",
+        
     }
 }
 
