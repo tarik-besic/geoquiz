@@ -87,16 +87,16 @@ const Monument=({navigation,route})=>{
                                 onPress={()=>validateAnswer(option.optionId,setBtnDisabled,setCurrentOptionSelected,correctOption,setScore,score,setShowButton)}
                                 disabled={btnDisabled}
                                 style={{backgroundColor: showButton ? option.optionId==data[question].correctOptionId ? "#49FF00" : option.optionId==currentOptionSelected  ? "red" : COLORS.MONUMENTS.gray : COLORS.MONUMENTS.gray,
-                                width:300,
-                                height:50,
+                                width:290,
+                                height:45,
                                 borderRadius:15,
-                                marginVertical:10,
+                                marginVertical:8,
                                 justifyContent:'center',
                                 alignItems:'center'
                             }}
                                 >
                                     <Text style={{
-                                        fontSize:24,
+                                        fontSize:22,
                                         fontWeight:"500",
                                         color:COLORS.MONUMENTS.white
                                         }}>
@@ -109,7 +109,7 @@ const Monument=({navigation,route})=>{
                     <View>
                         {showButton&& <Button data={btnData}/>}
                     </View>
-                    {showModal ? <Modal data={modalData} /> : null}
+                    {showModal ? <Modal data={modalData} style={{background:"#4EB4D1"}}/> : null}
                 </View>                
             </View>
         )   
