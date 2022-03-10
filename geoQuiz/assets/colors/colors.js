@@ -21,6 +21,11 @@ const COLORS={
         heading:"#FFF",
         wrap:"#D5DCEC",
         gray:"#8F8F8F"
+    },
+    POPULATION:{
+        header:"#DAD54D",
+        headerText:"#A9A232",
+        background:"#E1DFAE"
     }
 }
 
